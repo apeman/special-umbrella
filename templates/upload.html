@@ -1,0 +1,79 @@
+<section class="flexy">
+<form enctype="multipart/form-data"  method="POST" action="/upload" >
+		<input type="file" name="imgfile" id="myFile" multiple size="4" onchange="myFunction()" accept="image/*" required><br>
+		<input type="text" name="title" placeholder="title" /><br>
+		<input type="text" name="caption" placeholder="caption" /><br>
+		<input type="text" name="location" placeholder="location" /><br>
+		<input type="text" name="tags" placeholder="tags" /><br>
+		<input type="checkbox" name="nsfw" id="nsfw" value="nsfw"> <label for="nsfw"> NSFW</label><br><br>
+		<span>Share With : </span><select name="access">
+			<option value="public">Everyone</option>
+			<option value="protected">Followers Only</option>
+			<option value="private">Private</option>
+		</select><br><br>
+		<input type="submit" value="Submit"/>
+		<span id="filewarning"></span>
+	</form>
+		<div class="previewContainer" id="demo"></div>
+</section>
+<script>
+function myFunction(){
+  var x = document.getElementById("myFile");
+  var txt = "";
+  if ('files' in x) {
+    if (x.files.length == 0) {
+      txt = "Select one or more files.";
+    } else {
+      for (var i = 0; i < x.files.length; i++) {
+        txt += "<article class='filePreviewCon'><br><strong>" + (i+1) + ". file</strong><br>";
+        var file = x.files[i];
+        if ('name' in file) {
+          txt += "<p>name: " + file.name + "</p><br>";
+        }
+        if ('size' in file) {
+		if (file.size > 2*1024*1024) {
+			window.alert("Size too big, select file smaller than 2 MB");
+			x.files.splice(i, 1);
+		} else {
+			txt += "<span>size: " + formatBytes(file.size) + " bytes </span><br><img class='previewImg' src='"+ URL.createObjectURL(file) +"'/></article>";
+		  }
+        }
+      }
+    }
+  } 
+  else {
+    if (x.value == "") {
+      txt += "Select one or more files.";
+    } else {
+      txt += "The files property is not supported by your browser!";
+      txt  += "<br>The path of the selected file: " + x.value; // If the browser does not support the files property, it will return the path of the selected file instead. 
+    }
+  }
+	document.getElementById("demo").innerHTML = txt;
+}
+
+function formatBytes(a,b=2){if(!+a)return"0 Bytes";const c=0>b?0:b,d=Math.floor(Math.log(a)/Math.log(1024));return`${parseFloat((a/Math.pow(1024,d)).toFixed(c))} ${["Bytes","KiB","MiB","GiB","TiB","PiB","EiB","ZiB","YiB"][d]}`}
+</script>
+
+<p><strong>Tip:</strong> Use the Control or the Shift key to select multiple files.</p>
+<style>
+.previewImg {
+	max-width: 200px;
+}
+.previewContainer {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1rem;
+    max-width: 700px;
+    width: 100%;
+    background: aliceblue;
+}
+.filePreviewCon {
+    padding: 0.8rem;
+    display: flex;
+    width: 50%;
+    max-width: 350px;
+    border: 1px solid #777;
+    flex-direction: column;
+}
+</style>

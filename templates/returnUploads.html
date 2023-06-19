@@ -1,0 +1,14 @@
+<!DOCTYPE HTML>
+<html>
+<body>
+{{template "header"}}
+{{template "nav"}}
+{{template "leftaside"}}
+	<div>
+		{{range .}}
+			<img src="{{.}}"/>
+		{{end}}
+		</div>
+{{template "rightaside"}}
+{{template "footer"}}
+</html>

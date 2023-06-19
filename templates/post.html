@@ -1,0 +1,131 @@
+	<div class="slidercontainer">
+     <div class="posthead">
+        <div>
+          <img src="#">
+        </div>
+        <div>{{.UserName}}</div>
+      <div class="postops">
+        <span><svg color="#262626" fill="#262626" role="img" viewBox="0 0 24 24" width="30" height="30"><circle cx="12" cy="12" r="1.5"></circle><circle cx="6" cy="12" r="1.5"></circle><circle cx="18" cy="12" r="1.5"></circle></svg></span>
+      </div>
+     </div>
+	 <div>
+	 	{{range .Pics}}
+     <div class="showSlide fade" style="display: block;"> 
+       <div class="showSlidePic"><img src="{{ . }}"></div>  
+     </div>  
+	{{end}}
+
+     <div class="carousel__nav">
+      <span id="moveLeft" class="carousel__arrow left" onclick="nextSlide(-1)">
+           <svg class="carousel__icon" width="24" height="24" viewBox="0 0 24 24">
+       <path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z"></path>
+   </svg>
+       </span>
+       <span id="moveRight" class="carousel__arrow right" onclick="nextSlide(1)">
+         <svg class="carousel__icon" width="24" height="24" viewBox="0 0 24 24">
+     <path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z"></path>
+   </svg>    
+       </span>
+     </div>
+</div>	
+     <div class="postfoot">
+		<h3>{{ .Title }}</h3>
+		<div class="caption"><p>{{ .Caption }}</p></div>
+		<div class="hashtags">#<span>{{ .Tags }}</span></div>
+		<div class="datetime">{{ .Date }}</div>
+		<p><span>Location ; </span>{{ .Location }}</p>
+		<!--p><span>Access ; </span>{{ .Access }}</p-->
+		<p><span></span>{{ .NSFW }}</p>
+    </div>
+    </div>
+	
+	
+{{ if .LoggedIn }}
+	<a href="/edit/{{.PostId}}">Edit</a><br><br>
+<form method="POST" action="/delete/{{.PostId}}">
+	<button>Delete</button>
+</form>
+{{ end }}
+
+
+   <script type="text/javascript">  
+     var slide_index = 1;  
+     displaySlides(slide_index);  
+
+     function nextSlide(n) {  
+         displaySlides(slide_index += n);  
+     }  
+
+     function currentSlide(n) {  
+         displaySlides(slide_index = n);  
+     }  
+
+     function displaySlides(n) {  
+         var i;  
+         var slides = document.getElementsByClassName("showSlide");  
+         if (n > slides.length) { slide_index = 1 }  
+         if (n < 1) { slide_index = slides.length }  
+         for (i = 0; i < slides.length; i++) {  
+             slides[i].style.display = "none";  
+         }  
+         slides[slide_index - 1].style.display = "block";  
+     }  
+ </script>  
+
+<style type="text/css">  
+.posthead {display: flex;justify-content: space-between;align-items: center;border-bottom: 1px solid #ddd;}
+  .slidercontainer {  
+      max-width: 660px;  
+      position: relative;  
+      margin: auto;
+      border: 1px solid #efefef;  
+	  padding: 4px;
+  }  
+  .showSlide {  
+      display: none  
+  }  
+  .showSlidePic {
+   height: 510px;
+   min-width: 100px;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+  }
+  .showSlide img {
+   max-height: 500px;
+   height: auto;
+   max-width: 500px;
+}
+.left, .right {
+    cursor: pointer;
+    position: absolute;
+    top: 44%;
+    height: 2rem;
+    padding: 4px;
+    transition: 0.6s ease;
+    border-radius: 50%;
+    background: #bcbcbc;
+    width: 2rem;
+}
+  .right {  
+      right: 0;  
+  }  
+      .left:hover, .right:hover {  
+          background-color: rgba(115, 115, 115, 0.8);  
+      }  
+  .content {  
+      font-size: 30px;  
+      padding: 8px 12px;  
+      top: 10px;  
+      width: 100%;  
+      text-align: center;  
+  }  
+  .active {  
+      color: #eff5d4;  
+      background-color: #717171;  
+  }  
+  .viewstagram {
+    font-size: 0.8rem;
+  }
+</style>  

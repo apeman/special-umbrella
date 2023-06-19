@@ -1,0 +1,13 @@
+<hr class="stylish"/>
+{{ range $key, $value := . }}
+   <strong><a href="/view/{{ $key }}">{{ $key }}</a></strong> : <p>{{ $value }}</span></p>
+{{ end }}
+<main class="home-main">
+  {{ range $key, $value := .  }}
+    <section id="posts">
+          <h3 class="home-page-heading">{{ .PostTitle }}</h3>
+          <div class="post-wrapper">{{ .PostBody }}</div>
+          <div class="post-id">{{ .PostId }}</div>
+    </section>
+  {{ end }}
+</main>

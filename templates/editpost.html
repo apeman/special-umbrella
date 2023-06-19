@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Upload file</title>
+  </head>
+<body onload="myFunction()">	
+{{ if .LoggedIn }}
+	<a href="/edit/{{.PostId}}">Edit</a><br><br>
+<form method="POST" action="/delete/{{.PostId}}">
+	<button>Delete</button>
+</form>
+{{ end }}
+	<form method="POST" action="/edit/{{.PostId}}" >
+		<input type="text" name="title" placeholder="title" value="{{ .Title }}" /><br>
+		<input type="text" name="caption" placeholder="caption" value="{{ .Caption }}"/><br>
+		<input type="text" name="location" placeholder="location" value="{{ .Location }}"/><br>
+		<input type="text" name="tags" placeholder="tags" value="{{ .Tags }}"/><br>
+		<input type="checkbox" name="nsfw" id="nsfw" value="{{ .NSFW }}"> <label for="nsfw"> NSFW</label><br><br>
+		<span>Share With : </span><select name="access">
+			<option value="{{ .Access }}" selected="selected">{{ .Access }}</option>
+			<option value="public">Everyone</option>
+			<option value="protected">Followers Only</option>
+			<option value="private">Private</option>
+		</select><br><br>
+		<input type="submit" value="Submit"/>
+		<div class="previewContainer" id="demo">
+	{{range .Pics}}
+		<img class="previewImg" src="{{ . }}"/>
+	{{end}}
+		</div>
+	</form>
+<style>
+.previewImg {
+	max-width: 200px;
+	max-height: 200px;
+}
+.previewContainer {
+	display: flex;
+	flex-wrap: wrap;
+	padding : 1rem;
+}
+.filePreviewCon {
+	margin: 1rem;
+}
+</style>
+</body>
+</html>

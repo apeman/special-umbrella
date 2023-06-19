@@ -1,0 +1,13 @@
+<nav class="navigation" tabindex="0">
+<a href="/">Home</a>
+	<a href="/new">New</a>	
+{{ if eq .LoggedIn "true"}}
+<form method="POST" action="/logout">
+	<button>Logout</button>
+</form>
+{{ end }}
+{{ if eq .LoggedOut "true"}}
+	<a href="/login">LogIn</a>
+{{ end }}
+</nav>
+<main>

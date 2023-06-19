@@ -1,0 +1,564 @@
+<div id="parent" class="parent">
+  
+  <!-- Navigation -->
+  
+  <header>
+    <div class="navbar">
+      <div class="logo">
+        <div class="textLogo">Oh Seyoung</div>
+      </div>
+  </header>
+  <nav style="overflow: hidden;height: 4rem;">
+    <ul class="scrollmenu">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#news">News</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#social" class="on">Social</a></li>
+ </ul>
+</nav>
+<style>
+  /*
+.scrollmenu {
+    margin: 0;
+    list-style: none;
+    padding: 0;
+    position: absolute;
+    display: table-cell;
+    width: 30rem;
+    transform: rotate(90deg);
+    transform-origin: 0;
+    margin-left: calc(50% - 0.14rem);
+    white-space: nowrap;
+}*/
+   .scrollmenu {
+    overflow-y: hidden;
+    white-space: nowrap;
+    text-transform: uppercase;
+    margin: 1.5rem 0;
+    padding-bottom: 2rem;
+    text-align: center;
+}
+.scrollmenu li {
+    display: inline-block;
+    color: #666666;
+    font-size: 1rem;
+    text-align: center;
+    padding: 0rem 1rem 0rem 1rem;
+    list-style-type: none;
+    font-family: "Open sans";
+}
+.scrollmenu li a {
+    padding: 0rem 0.6rem 0.4rem 0.6rem;
+    color: #666666;
+    text-decoration: none;
+    letter-spacing: 0.5;
+}
+.on {
+    color: #000000 !important;
+    border-bottom: 2px solid #000;
+}
+</style>
+<style>
+    /* Universal */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+html {
+  box-sizing: border-box;
+  background-color: ivory;
+}
+body {
+  font-size: 20px;
+  font-family: 'Open Sans', sans-serif;
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+header {
+  margin: 2rem 0px; 
+}
+
+.navbar {
+  display: inline-block;
+  width: 100%;
+}
+
+.textLogo {
+  text-transform: uppercase;
+  color: #000;
+  font-size: 3rem;
+  text-align: center;
+}
+
+/* Layout */
+
+.parent {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+
+/* Media Queries */
+
+@media screen and (max-width: 615px) {}
+
+@media screen and (min-width: 616px) {
+         .cardLayout .card:nth-child(4n-3) {
+    width: calc(60% - 12px);
+        }
+        .cardLayout .card:nth-child(4n-2) {
+    width: calc(40% - 12px);
+        }
+        .cardLayout .card:nth-child(4n-1) {
+    width: calc(40% - 12px);
+        }
+        .cardLayout .card:nth-child(4n) {
+    width: calc(60% - 12px);
+        }
+}
+.timelinecon h2 {
+   margin-bottom: 1rem;
+}
+
+.thumbcon{
+    height: 190px;
+    width: 340px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 16px;
+    margin: 0.9rem 0;
+}
+</style>
+<div class="tab-wrap">
+
+   <!-- active tab on page load gets checked attribute -->
+   <input type="radio" id="tab1" name="tabGroup1" class="tab" checked="">
+   <label for="tab1">Instagram</label>
+
+   <input type="radio" id="tab2" name="tabGroup1" class="tab">
+   <label for="tab2">YouTube</label>
+
+   <input type="radio" id="tab3" name="tabGroup1" class="tab">
+   <label for="tab3">Blogs</label>
+
+   <div class="tab__content">
+   <div class="slidercontainer">
+     <div class="posthead">
+      <table>
+        <tr>
+        <td>
+          <img src="https://unsplash.it/50/50?random">
+        </td>
+        <td>0sey0</td>
+        </tr>
+      </table>
+      <div class="postops">
+        <span><svg color="#262626" fill="#262626" role="img" viewBox="0 0 24 24" width="30" height="30"><circle cx="12" cy="12" r="1.5"></circle><circle cx="6" cy="12" r="1.5"></circle><circle cx="18" cy="12" r="1.5"></circle></svg></span>
+      </div>
+     </div>
+     <div class="showSlide fade"> 
+       <p style="text-align: center;"><img src="https://unsplash.it/800/600?random" /></p>  
+     </div>  
+     <div class="showSlide fade"> 
+       <p style="text-align: center;"><img src="https://unsplash.it/1000/800?random" /></p>  
+     </div>  
+     <div class="showSlide fade"> 
+       <p style="text-align: center;"><img src="https://unsplash.it/800/400?random" /></p>  
+     </div>  
+     <div class="showSlide fade"> 
+       <p style="text-align: center;"><img src="https://unsplash.it/600/400?random" /></p>  
+     </div>  
+     <div class="showSlide fade"> 
+       <p style="text-align: center;"><img src="https://unsplash.it/400/400?random" /></p>  
+     </div>  
+     <div class="carousel__nav">
+      <span id="moveLeft" class="carousel__arrow left" onclick="nextSlide(-1)">
+           <svg class="carousel__icon" width="24" height="24" viewBox="0 0 24 24">
+       <path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z"></path>
+   </svg>
+       </span>
+       <span id="moveRight" class="carousel__arrow right" onclick="nextSlide(1)">
+         <svg class="carousel__icon" width="24" height="24" viewBox="0 0 24 24">
+     <path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z"></path>
+   </svg>    
+       </span>
+     </div>
+     <div class="postfoot">
+       <div class="caption">This is a caption that has some meaning</div>
+       <div class="hashtags"><a>#hashtag</a><a>#taghash</a></div>
+       <div class="datetime">19-04-2022</div>
+     </div>
+     <a class="viewstagram" href="https://www.instagram.com/p/CcC4uaFLeWs/">View on Instagram</a>
+     </div>
+   </div>
+
+   <div class="tab__content">
+     <article>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/tkUenvihJNg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </article>
+   </div>
+
+   <div class="tab__content">
+    <section class="blogs">
+      <div class="post-list-item">
+         <div class="post-list-item-date">
+            <time>26 Feb 2022</time>
+         </div>
+         <div class="post-list-item-title">
+            <a href="/blog/2022/02/26/ai-rules-and-ethics/">
+            AI Ethics and Rules
+            </a>
+         </div>
+         <div class="post-list-item-desc">
+            Madness is like Gravity
+         </div>
+      </div>
+      <div class="post-list-item">
+         <div class="post-list-item-date">
+            <time>20 Apr 2022</time>
+         </div>
+         <div class="post-list-item-title">
+            <a href="/blog/2022/02/26/ai-rules-and-ethics/">
+              Madness is like Gravity
+            </a>
+         </div>
+         <div class="post-list-item-desc">
+            All it needs a little push.
+         </div>
+      </div>
+      <div class="post-list-item">
+         <div class="post-list-item-date">
+            <time>19 Apr 2022</time>
+         </div>
+         <div class="post-list-item-title">
+            <a href="/blog/2022/02/26/ai-rules-and-ethics/">
+            AI Ethics and Rules
+            </a>
+         </div>
+         <div class="post-list-item-desc">
+            Madness is like Gravity
+         </div>
+      </div>
+   </section>
+   </div>
+
+ </div>
+
+</section> 
+
+<style type="text/css">  
+.blogs  {
+    flex-wrap: wrap;
+    display: flex;
+    background: #ffffff;
+    overflow-x: visible;
+    justify-content: center;
+    overflow-y: hidden;
+}
+.post-list-item {
+    margin: 4px 4px;
+    overflow: hidden;
+    flex-basis: 350px;
+    flex-grow: 1;
+    flex-shrink: 1;
+    max-width: 350px;
+    height: 180px;
+    padding: 1rem;
+}
+.post-list-item-date {
+  font-size: 13.5px;
+    margin: 0;
+    line-height: 1;
+    text-transform: capitalize;
+    display: block;
+    font-weight: 600;
+    transition: background-color .15s ease-in-out;
+    text-decoration: none;
+    color: #000000;
+}
+.post-list-item-title {
+    margin-bottom: 0.3rem;
+    font-size: 2.2rem;
+    font-weight: 600;
+    line-height: 2.4rem;
+}
+.post-list-item-desc {
+    color: #343a40;
+    margin-bottom: 0.25rem;
+    font-size: 1rem;
+}
+article {
+  
+  margin: 0 auto;
+    width: 100%;
+    max-width: fit-content;
+}
+td {
+  padding: 4px;
+}
+td img {
+    border-radius: 50%;
+  }
+.posthead {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 0;
+  border-bottom: 1px solid #efefef;  
+}
+.postfoot {
+  font-size: 1rem;
+  color: #333;
+  padding: 6px 4px;
+  line-height: 1.2;
+}
+.hashtags {
+  margin: 8px 0;
+  display: inline-block;
+}
+.hashtags a {
+  margin-right: 6px;
+  color: #666;
+}
+.datetime {
+  font-size: 0.8rem;
+}
+.postops {
+  display: flex;
+  align-items: center;
+}
+.postops span {
+  padding: 0 4px;
+}
+  .slidercontainer {  
+      max-width: 420px;  
+      position: relative;  
+      margin: auto;
+      border: 1px solid #efefef;  
+  }  
+  .showSlide {  
+      display: none  
+  }  
+  .showSlide img {
+   max-height: 500px;
+   width: 100%;
+   min-width: 100px;
+   height: auto;
+   max-width: 500px;
+}
+  .left, .right {
+    cursor: pointer;
+    position: absolute;
+    top: 44%;
+    width: auto;
+    padding: 4px;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 50%;
+    background: white;
+    margin: 0.4rem -1rem;
+}
+  .right {  
+      right: 0;  
+  }  
+      .left:hover, .right:hover {  
+          background-color: rgba(115, 115, 115, 0.8);  
+      }  
+  .content {  
+      font-size: 30px;  
+      padding: 8px 12px;  
+      top: 10px;  
+      width: 100%;  
+      text-align: center;  
+  }  
+  .active {  
+      color: #eff5d4;  
+      background-color: #717171;  
+  }  
+  .viewstagram {
+    font-size: 0.8rem;
+  }
+</style>  
+<!--style>
+   .carousel__icon {
+    display: inline-block;
+    vertical-align: middle;
+    width: 16px;
+    fill: #5d5d5d;
+}
+.carousel__arrow {
+    cursor: pointer;
+    display: inline-block;
+    padding: 11px 15px;
+    position: relative;
+}
+.carousel__arrow:nth-child(1):after {
+    content: '';
+    right: -3px;
+    position: absolute;
+    width: 1px;
+    background-color: #b0b0b0;
+    height: 14px;
+    top: 50%;
+    margin-top: -7px;
+}
+.carousel__nav {
+    position: absolute;
+    right: 0;
+    z-index: 2;
+    background-color: #fff;
+    bottom: 0;
+}
+</style-->
+
+   <script type="text/javascript">  
+     var slide_index = 1;  
+     displaySlides(slide_index);  
+
+     function nextSlide(n) {  
+         displaySlides(slide_index += n);  
+     }  
+
+     function currentSlide(n) {  
+         displaySlides(slide_index = n);  
+     }  
+
+     function displaySlides(n) {  
+         var i;  
+         var slides = document.getElementsByClassName("showSlide");  
+         if (n > slides.length) { slide_index = 1 }  
+         if (n < 1) { slide_index = slides.length }  
+         for (i = 0; i < slides.length; i++) {  
+             slides[i].style.display = "none";  
+         }  
+         slides[slide_index - 1].style.display = "block";  
+     }  
+ </script>  
+
+ <style>
+.tab-wrap {
+  transition: 0.3s box-shadow ease;
+  border-radius: 6px;
+  max-width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  list-style: none;
+  background-color: #fff;
+  margin: 40px 0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+.tab-wrap:hover {
+  box-shadow: 0 12px 23px rgba(0, 0, 0, 0.23), 0 10px 10px rgba(0, 0, 0, 0.19);
+}
+
+.tab {
+  display: none;
+}
+.tab:checked:nth-of-type(1) ~ .tab__content:nth-of-type(1) {
+  opacity: 1;
+  transition: 0.5s opacity ease-in, 0.8s transform ease;
+  position: relative;
+  top: 0;
+  z-index: 100;
+  transform: translateY(0px);
+  text-shadow: 0 0 0;
+}
+.tab:checked:nth-of-type(2) ~ .tab__content:nth-of-type(2) {
+  opacity: 1;
+  transition: 0.5s opacity ease-in, 0.8s transform ease;
+  position: relative;
+  top: 0;
+  z-index: 100;
+  transform: translateY(0px);
+  text-shadow: 0 0 0;
+}
+.tab:checked:nth-of-type(3) ~ .tab__content:nth-of-type(3) {
+  opacity: 1;
+  transition: 0.5s opacity ease-in, 0.8s transform ease;
+  position: relative;
+  top: 0;
+  z-index: 100;
+  transform: translateY(0px);
+  text-shadow: 0 0 0;
+}
+.tab:checked:nth-of-type(4) ~ .tab__content:nth-of-type(4) {
+  opacity: 1;
+  transition: 0.5s opacity ease-in, 0.8s transform ease;
+  position: relative;
+  top: 0;
+  z-index: 100;
+  transform: translateY(0px);
+  text-shadow: 0 0 0;
+}
+.tab:checked:nth-of-type(5) ~ .tab__content:nth-of-type(5) {
+  opacity: 1;
+  transition: 0.5s opacity ease-in, 0.8s transform ease;
+  position: relative;
+  top: 0;
+  z-index: 100;
+  transform: translateY(0px);
+  text-shadow: 0 0 0;
+}
+.tab:first-of-type:not(:last-of-type) + label {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.tab:not(:first-of-type):not(:last-of-type) + label {
+  border-radius: 0;
+}
+.tab:last-of-type:not(:first-of-type) + label {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.tab:checked + label {
+  background-color: #fff;
+  box-shadow: 0 -1px 0 #fff inset;
+  cursor: default;
+}
+.tab:checked + label:hover {
+  box-shadow: 0 -1px 0 #fff inset;
+  background-color: #fff;
+}
+.tab + label {
+  box-shadow: 0 -1px 0 #eee inset;
+  border-radius: 6px 6px 0 0;
+  cursor: pointer;
+  display: block;
+  text-decoration: none;
+  color: #333;
+  flex-grow: 3;
+  text-align: center;
+  background-color: #f2f2f2;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  text-align: center;
+  transition: 0.3s background-color ease, 0.3s box-shadow ease;
+  height: 50px;
+  box-sizing: border-box;
+  padding: 15px;
+}
+.tab + label:hover {
+  background-color: #f9f9f9;
+  box-shadow: 0 1px 0 #f4f4f4 inset;
+}
+.tab__content {
+  padding: 10px 25px;
+  background-color: transparent;
+  position: absolute;
+  width: 100%;
+  z-index: -1;
+  opacity: 0;
+  left: 0;
+  transform: translateY(-3px);
+  border-radius: 6px;
+}
+
+ </style>
