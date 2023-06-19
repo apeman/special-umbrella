@@ -43,7 +43,7 @@ type Post struct {
 func Index(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 	fmt.Println("path", r.URL.Path)
 	if r.Method == "GET" {
-		m := rdxHgetall("newpost")
+		m := rdxHgetall("newphotopost")
 			for k, v := range m {
 				fmt.Println(">>", k)
 				parts := strings.Split(v, ":::")
@@ -164,7 +164,7 @@ var picsStr string
 	fmt.Println(pics)
 	picount := len(pics)
 	picsStr = strings.Join(pics, ":::")
-	rdxHset("newpost", token, title + ":::" + caption + ":::" + location + ":::" + tags + ":::" + nsfw + ":::" + access) 
+	rdxHset("newphotopost", token, title + ":::" + caption + ":::" + location + ":::" + tags + ":::" + nsfw + ":::" + access) 
 	rdxHset("photos", token, username + ":::" + date + ":::" + string(picount) + ":::" + picsStr) 
 	http.Redirect(w, r, "/view/"+token, http.StatusSeeOther)
 //		w.Write([]byte(fmt.Sprintf("SUCCESS - use /files/%v to access the file", newFileName)))
@@ -204,7 +204,7 @@ func ViewPost(w http.ResponseWriter, r *http.Request, postid httprouter.Params) 
 			if isLoggedIn(r) {
 				fmt.Println("path: ", r.URL.Path)		
 				token := postid.ByName("postid")
-				postDetails := rdxHget("newpost", token)
+				postDetails := rdxHget("newphotopost", token)
 				postPhotos := rdxHget("photos", token)
 				fmt.Println(postDetails)
 				fmt.Println(postPhotos)
@@ -218,7 +218,7 @@ func ViewPost(w http.ResponseWriter, r *http.Request, postid httprouter.Params) 
 			} 	else {
 				fmt.Println("path: ", r.URL.Path)		
 				token := postid.ByName("postid")
-				postDetails := rdxHget("newpost", token)
+				postDetails := rdxHget("newphotopost", token)
 				postPhotos := rdxHget("photos", token)
 				fmt.Println(postDetails)
 				fmt.Println(postPhotos)
@@ -246,7 +246,7 @@ func EditPost(w http.ResponseWriter, r *http.Request, postid httprouter.Params) 
 			if isLoggedIn(r) {
 				fmt.Println("path: ", r.URL.Path)		
 				token := postid.ByName("postid")
-				postDetails := rdxHget("newpost", token)
+				postDetails := rdxHget("newphotopost", token)
 				postPhotos := rdxHget("photos", token)
 				fmt.Println(postDetails)
 				fmt.Println(postPhotos)
@@ -284,7 +284,7 @@ func EditPost(w http.ResponseWriter, r *http.Request, postid httprouter.Params) 
 		fmt.Println("NSFW : ", nsfw) // empty or 1
 		fmt.Println("Caption : ", caption) 
 		fmt.Println("Tags : ", tags) 
-		rdxHset("newpost", token, title + ":::" + caption + ":::" + location + ":::" + tags + ":::" + nsfw + ":::" + access) 
+		rdxHset("newphotopost", token, title + ":::" + caption + ":::" + location + ":::" + tags + ":::" + nsfw + ":::" + access) 
 		http.Redirect(w, r, "/view/"+token, http.StatusSeeOther)
 	}
 		default : {
@@ -297,7 +297,7 @@ func DeletePost(w http.ResponseWriter, r *http.Request, postid httprouter.Params
 	fmt.Println("path", r.URL.Path)
 	if r.Method  == "POST" {
 		if isLoggedIn(r) {
-			println(rdxHdel("newpost", postid.ByName("postid")))
+			println(rdxHdel("newphotopost", postid.ByName("postid")))
 			http.Redirect(w, r, "/", http.StatusSeeOther)
 		} 	else {
 			tmpl.ExecuteTemplate(w, "head.html", nil)
