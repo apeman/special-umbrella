@@ -3,8 +3,6 @@ import (
 	"html/template"
 	"net/http"
   	"log"
-	"fmt"
-	"strings"
 	
     "github.com/julienschmidt/httprouter"
 )
